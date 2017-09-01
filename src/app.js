@@ -23,9 +23,14 @@ class App extends Component {
         const restaurants = this.state.restaurants.map((restaurant, index) => {
             return (
                 <li key={index}>
-                    <span><strong dangerouslySetInnerHTML={{ __html: restaurant.title.rendered }}></strong></span>
-                    &nbsp;
-                    <span dangerouslySetInnerHTML={{ __html: restaurant.acf.description }} ></span>
+                    <h3 dangerouslySetInnerHTML={{ __html: restaurant.title.rendered }}></h3>
+                    <strong>Description: </strong><span dangerouslySetInnerHTML={{ __html: restaurant.acf.description }}></span>
+                    <br />
+                    <strong>Address: </strong><span dangerouslySetInnerHTML={{ __html: restaurant.acf.address }}></span>
+                    <br />
+                    <strong>Favourite Dishes: </strong><span dangerouslySetInnerHTML={{ __html: restaurant.acf.favourite_dishes }}></span>
+                    <br />
+                    <strong>Link: </strong><a href={restaurant.acf.link}>{restaurant.acf.link}</a>
                 </li>
             );
         });
