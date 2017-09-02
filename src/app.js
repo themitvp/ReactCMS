@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Restaurant } from './restaurant';
 
 class App extends Component {
     constructor() {
@@ -20,20 +21,12 @@ class App extends Component {
     }
 
     render() {
-        const restaurants = this.state.restaurants.map((restaurant, index) => {
-            return (
+        const restaurants = this.state.restaurants
+            .map((restaurant, index) => (
                 <li key={index}>
-                    <h3 dangerouslySetInnerHTML={{ __html: restaurant.title.rendered }}></h3>
-                    <strong>Description: </strong><span dangerouslySetInnerHTML={{ __html: restaurant.acf.description }}></span>
-                    <br />
-                    <strong>Address: </strong><span dangerouslySetInnerHTML={{ __html: restaurant.acf.address }}></span>
-                    <br />
-                    <strong>Favourite Dishes: </strong><span dangerouslySetInnerHTML={{ __html: restaurant.acf.favourite_dishes }}></span>
-                    <br />
-                    <strong>Link: </strong><a href={restaurant.acf.link}>{restaurant.acf.link}</a>
+                    <Restaurant restaurant={restaurant} />
                 </li>
-            );
-        });
+            ));
         return (
             <div>
                 <h1>Restaurants fetched from Wordpress:</h1>
