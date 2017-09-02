@@ -16,9 +16,19 @@ class App extends Component {
             .then(res => res.json())
             .then(res => {
                 this.setState({
-                    restaurants: res
+                    restaurants: sort(res)
                 });
             });
+
+        function sort(restaurants) {
+            return restaurants.sort((a, b) => {
+                let aTitle = a.title.rendered.toLowerCase(),
+                    bTitle = b.title.rendered.toLowerCase();
+                if (aTitle < bTitle) return -1;
+                if (aTitle > bTitle) return 1;
+                return 0;
+            });
+        }
     }
 
     render() {

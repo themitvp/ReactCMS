@@ -12,6 +12,10 @@ export class Restaurant extends Component {
                 <br />
                 <strong>Favourite Dishes: </strong><span dangerouslySetInnerHTML={{ __html: restaurant.acf.favourite_dishes }}></span>
                 <br />
+                {restaurant.acf.price_class && <span>
+                    <strong>Price class: </strong> {restaurant.acf.price_class}
+                    <br />
+                </span>}
                 <strong>Link: </strong><a href={restaurant.acf.link}>{restaurant.acf.link}</a>
             </div>
         );
